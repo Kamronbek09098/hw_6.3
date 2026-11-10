@@ -5,6 +5,7 @@ import {
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
+import { Role } from '../common/enums/role.enum';
 import { User } from '../users/entities/user.entity';
 import { UsersService } from '../users/users.service';
 import { LoginDto } from './dto/login.dto';
@@ -25,8 +26,10 @@ export class AuthService {
 
     const hashedPassword = await bcrypt.hash(dto.password, 10);
     const user = await this.usersService.create({
-      ...dto,
+      email: dto.email,
+      fullName: dto.fullName,
       password: hashedPassword,
+      role: Role.USER,
     });
 
     return this.buildAuthResponse(user);
