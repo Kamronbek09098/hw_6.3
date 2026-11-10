@@ -1,3 +1,4 @@
+
 # Mini Shop API — Debugging amaliyoti
 
 Bu kichik internet-do'kon uchun yozilgan **backend REST API**. Loyiha NestJS, TypeScript, PostgreSQL va TypeORM'da yozilgan.
