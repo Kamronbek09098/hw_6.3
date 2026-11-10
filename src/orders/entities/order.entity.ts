@@ -8,6 +8,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { OrderStatus } from '../../common/enums/order-status.enum';
+import { decimalTransformer } from '../../common/transformers/decimal.transformer';
 import { User } from '../../users/entities/user.entity';
 import { OrderItem } from './order-item.entity';
 
@@ -26,7 +27,13 @@ export class Order {
   @Column({ type: 'enum', enum: OrderStatus, default: OrderStatus.PENDING })
   status: OrderStatus;
 
-  @Column({ name: 'total_price', type: 'decimal', precision: 12, scale: 2 })
+  @Column({
+    name: 'total_price',
+    type: 'decimal',
+    precision: 12,
+    scale: 2,
+    transformer: decimalTransformer,
+  })
   totalPrice: number;
 
   @CreateDateColumn({ name: 'created_at' })
