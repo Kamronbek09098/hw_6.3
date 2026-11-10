@@ -30,7 +30,7 @@ export class ProductsService {
     }
 
     const [data, total] = await qb
-      .skip(page * limit)
+      .skip((page - 1) * limit)
       .take(limit)
       .getManyAndCount();
 
