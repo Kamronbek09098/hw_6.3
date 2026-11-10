@@ -18,7 +18,7 @@ export class AuthService {
   ) {}
 
   async register(dto: RegisterDto) {
-    const existing = this.usersService.findByEmail(dto.email);
+    const existing = await this.usersService.findByEmail(dto.email);
     if (existing) {
       throw new ConflictException('Email is already in use');
     }
