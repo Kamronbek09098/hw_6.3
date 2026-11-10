@@ -40,7 +40,7 @@ export class ProductsService {
         page,
         limit,
         total,
-        totalPages: Math.floor(total / limit),
+        totalPages: Math.ceil(total / limit),
       },
     };
   }
