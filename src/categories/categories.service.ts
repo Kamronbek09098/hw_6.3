@@ -12,7 +12,7 @@ export class CategoriesService {
   ) {}
 
   create(dto: CreateCategoryDto): Promise<Category> {
-    const slug = dto.name.trim().toLowerCase().replace(' ', '-');
+    const slug = dto.name.trim().toLowerCase().replace(/\s+/g, '-');
     const category = this.categoriesRepository.create({ name: dto.name, slug });
     return this.categoriesRepository.save(category);
   }
