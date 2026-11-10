@@ -22,7 +22,7 @@ export class ProductsService {
       .orderBy('product.id', 'ASC');
 
     if (search) {
-      qb.andWhere(`product.name ILIKE '%${search}%'`);
+      qb.andWhere('product.name ILIKE :search', { search: `%${search}%` });
     }
 
     if (categoryId) {
